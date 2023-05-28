@@ -22,7 +22,7 @@ document.querySelector('#but_res').addEventListener('click',()=>{
 document.querySelector('#but_ger').addEventListener('click',gerar)
 
 function gerar(){
-    dados = [50,-50,0,0,5,50,-5]
+    dados = [0,50,-50,0,0,5,50,-5]
 
     if(!(dados.length))return alert('Não há dados.')
 
@@ -54,26 +54,31 @@ function gerar(){
 function corretor(data){
     let new_data = []
 
-    let max = data[0]
-    let min = data[0]
-    let max_abs = Math.abs(data[0])
-    for(let i=1;i<data.length;i++){
-        if(data[i]>max)max = data[i]
-        if(data[i]<min)min = data[i]
-        if(Math.abs(data[i])>max_abs)max_abs=Math.abs(data[i])
-    }
-
-    let prop = 80/max_abs
     for(let i=0;i<data.length;i++){
         new_data[i]=data[i]
-        if(max > 150 || min < 0)new_data[i]*(prop)
+    }
+
+    let k = new_data[0]
+
+    let over = false
+    for(let i=0;i<data.length;i++){
+        let a = 75-(new_data[i]-k)
+        if(a > 150 || a < 0)over = true
+    }
+
+    let prop=1
+
+    if(over)find_prop(new_data,prop)
+
+    for(let i=0;i<data.length;i++){
+        new_data[i]*=(prop)
     }
 
     console.log('Data: '+data) 
 
     console.log('Data pós proporção: '+new_data)
 
-    let k = new_data[0]
+    
     for(let i=0;i<data.length;i++){
         new_data[i] = 75-(new_data[i]-k)
     }
@@ -81,4 +86,52 @@ function corretor(data){
     console.log('Data pós ajuste vertical: '+new_data)
 
     return new_data
+}
+
+function find_prop(data,prop){
+        let max
+        let min
+
+        let a=[]
+
+        let find = false
+        while(!find){
+            for(let i=0;i<data.length;i++){
+                a[i]=data[i]*prop
+            }
+
+            max = maxi(a)
+            min = mini(a)
+
+            if(max*prop < 150 & min*prop > 0){
+                find = true
+            }
+            else{
+                prop-=0.1
+            }
+        } 
+}
+
+function maxi(data){
+    let k = data[0]
+
+    let maximo = 75-(data[0]-k)
+
+    for(let i=0;i<data.length;i++){
+        if(75-(data[i]-k)>maximo)maximo=75-(data[i]-k)
+    }
+
+    return maximo
+}
+
+function mini(data){
+    let k = data[0]
+
+    let minimo = 75-(data[0]-k)
+
+    for(let i=0;i<data.length;i++){
+        if(75-(data[i]-k)<minimo)minimo=75-(data[i]-k)
+    }
+
+    return minimo
 }
