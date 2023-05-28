@@ -1,0 +1,57 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header h1{
+    text-align: center;
+    padding: 20px;   
+}
+
+#principal{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+main select{
+    width: 5%;
+}
+
+#canvas{
+    background-color: burlywood;
+    width: 60vw;
+    height: 30vw;
+    border: 1px solid black;
+}
+
+main form{
+    border: 1px solid black;
+    width: 40%;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+form div{
+    text-align: center;
+}
+
+#but_ger,#but_res{
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#but_ger:hover,#but_res:hover{
+    background-color: lightgray;
+}
+
+footer p{
+    text-align: center;
+    padding: 20px;
+    font-size: 1.3em;
+}
