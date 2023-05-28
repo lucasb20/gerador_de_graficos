@@ -22,9 +22,9 @@ document.querySelector('#but_res').addEventListener('click',()=>{
 document.querySelector('#but_ger').addEventListener('click',gerar)
 
 function gerar(){
-    dados = [0,50,-50,0,0,5,50,-5]
-
     if(!(dados.length))return alert('Não há dados.')
+
+    ctx.clearRect(0,0,300,150)
 
     let dados_c = corretor(dados)
 
@@ -66,9 +66,11 @@ function corretor(data){
         if(a > 150 || a < 0)over = true
     }
 
+    console.log('Over: '+over)
+
     let prop=1
 
-    if(over)find_prop(new_data,prop)
+    if(over)prop = find_prop(new_data,prop)
 
     for(let i=0;i<data.length;i++){
         new_data[i]*=(prop)
@@ -107,9 +109,11 @@ function find_prop(data,prop){
                 find = true
             }
             else{
-                prop-=0.1
+                prop-=0.01
             }
-        } 
+        }
+        
+        return prop
 }
 
 function maxi(data){
