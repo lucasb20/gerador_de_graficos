@@ -30,15 +30,24 @@ main form{
     width: 40%;
     margin: 10px auto;
     border-radius: 5px;
+    padding: 10px;
+}
+
+@media screen and (max-width:1000px) {
+    main form{
+        border: 0px;
+    }
 }
 
 form div{
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-#but_ger,#but_res{
+#but_ger,#but_res,#but_add{
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
     padding: 10px;
     margin: 10px;
     border: 1px solid black;
@@ -46,8 +55,13 @@ form div{
     cursor: pointer;
 }
 
-#but_ger:hover,#but_res:hover{
+#but_ger:hover,#but_res:hover, div #but_add:hover{
     background-color: lightgray;
+}
+
+input#num{
+    width: 80px;
+    height: 20px;
 }
 
 footer p{
