@@ -42,8 +42,15 @@ function gerar(){
     for(let i=0;i<dados_c.length;i++){
         new_distance = start_point + (distance*i)
         ctx.lineTo(new_distance,dados_c[i])
+        /* if(i==dados_c.length-1){
+            ctx.lineTo(canvas_width,canvas_height)
+            ctx.lineTo(0,canvas_height)
+            ctx.lineTo(0,start_value)
+        } */
     }
 
+   /*  ctx.fillStyle = 'rgb(255,0,0)'
+    ctx.fill() */
     ctx.stroke()
 
     ctx.closePath()
