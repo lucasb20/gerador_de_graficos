@@ -70,10 +70,12 @@ function corretor(data){
 
     let prop=1
 
-    if(over)prop = find_prop(new_data,prop)
-
-    for(let i=0;i<data.length;i++){
-        new_data[i]*=(prop)
+    if(over){
+        prop = find_prop(new_data,prop)
+        for(let i=0;i<data.length;i++){
+            new_data[i]*=(prop)
+            new_data[i] = Math.floor(new_data[i])
+        }
     }
 
     console.log('Data: '+data) 
@@ -113,6 +115,8 @@ function find_prop(data,prop){
             }
         }
         
+        console.log('Prop: '+prop)
+
         return prop
 }
 
