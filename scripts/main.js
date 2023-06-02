@@ -2,7 +2,9 @@ const canvas = document.querySelector('#canvas')
 const ctx = canvas.getContext('2d')
 const table = document.querySelector('#table')
 
-const canvas_width = 300,canvas_height = 150
+canvas.width = 800
+canvas.height = 400
+const canvas_width = 800,canvas_height = 400
 
 let dados = []
 
@@ -24,7 +26,7 @@ document.querySelector('#but_ger').addEventListener('click',gerar)
 function gerar(){
     if(!(dados.length))return alert('Não há dados.')
 
-    ctx.clearRect(0,0,300,150)
+    ctx.clearRect(0,0,canvas_width,canvas_height)
 
     let dados_c = corretor(dados)
 
@@ -69,8 +71,8 @@ function corretor(data){
 
     let over = false
     for(let i=0;i<data.length;i++){
-        let a = 75-(new_data[i]-k)
-        if(a > 150 || a < 0)over = true
+        let a = 200-(new_data[i]-k)
+        if(a > 400 || a < 0)over = true
     }
 
     console.log('Over: '+over)
@@ -91,7 +93,7 @@ function corretor(data){
 
     
     for(let i=0;i<data.length;i++){
-        new_data[i] = 75-(new_data[i]-k)
+        new_data[i] = 200-(new_data[i]-k)
     }
 
     console.log('Data pós ajuste vertical: '+new_data)
@@ -114,7 +116,7 @@ function find_prop(data,prop){
             max = maxi(a)
             min = mini(a)
 
-            if(max*prop < 150 & min*prop > 0){
+            if(max*prop < 400 & min*prop > 0){
                 find = true
             }
             else{
@@ -130,10 +132,10 @@ function find_prop(data,prop){
 function maxi(data){
     let k = data[0]
 
-    let maximo = 75-(data[0]-k)
+    let maximo = 200-(data[0]-k)
 
     for(let i=0;i<data.length;i++){
-        if(75-(data[i]-k)>maximo)maximo=75-(data[i]-k)
+        if(200-(data[i]-k)>maximo)maximo=200-(data[i]-k)
     }
 
     return maximo
@@ -142,10 +144,10 @@ function maxi(data){
 function mini(data){
     let k = data[0]
 
-    let minimo = 75-(data[0]-k)
+    let minimo = 200-(data[0]-k)
 
     for(let i=0;i<data.length;i++){
-        if(75-(data[i]-k)<minimo)minimo=75-(data[i]-k)
+        if(200-(data[i]-k)<minimo)minimo=200-(data[i]-k)
     }
 
     return minimo
